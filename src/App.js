@@ -8,7 +8,7 @@ class App extends Component {
     super();
     this.state = {
       messArray: [],
-      error: "",
+      error: "Welcome!! Please enter your pincode above to find mess in your city and enjoy homely food. If you are mess owner, Register with us to grow your business and get discovered by the new generation of students, the \"Tech Savy\" students and working professionals. Let us help you grow your business in this hyper-competitive market. So what are you waiting for? Register now by clicking on \"Sign Up\" above."
     };
   }
   loadMessArray = (data) => {
@@ -35,7 +35,7 @@ class App extends Component {
         <Navigation />
         <Menu loadMessArray={this.loadMessArray} />
         <ErrorMessage error={this.state.error}/>
-        <CardContainer />
+        <CardContainer messArray={this.state.messArray}/>
       </div>
     );
   }
