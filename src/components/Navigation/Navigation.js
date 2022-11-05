@@ -23,10 +23,6 @@ const Navigation = () => {
         </a>
       </div>
     </nav>
-
-    // <nav >
-    // <img src={logo} alt="logo"/>
-    // </nav>
   );
 };
 
