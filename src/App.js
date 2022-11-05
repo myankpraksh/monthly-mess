@@ -7,9 +7,13 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      pin : "",
       messArray: [],
       error: "Welcome!! Please enter your pincode above to find mess in your city and enjoy homely food. If you are mess owner, Register with us to grow your business and get discovered by the new generation of students, the \"Tech Savy\" students and working professionals. Let us help you grow your business in this hyper-competitive market. So what are you waiting for? Register now by clicking on \"Sign Up\" above."
     };
+  }
+  setPin = (pin)=>{
+    this.setState({pin});
   }
   loadMessArray = (data) => {
     if (typeof data === "string") {
@@ -33,9 +37,9 @@ class App extends Component {
     return (
       <div>
         <Navigation />
-        <Menu loadMessArray={this.loadMessArray} />
+        <Menu loadMessArray={this.loadMessArray} setPin={this.setPin} />
         <ErrorMessage error={this.state.error}/>
-        <CardContainer messArray={this.state.messArray}/>
+        <CardContainer messArray={this.state.messArray} pin={this.state.pin}/>
       </div>
     );
   }

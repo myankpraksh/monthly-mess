@@ -3,6 +3,12 @@ import './ErrorMessage.css';
 
 export default function ErrorMessage({error}) {
   return (
-    <div className="ErrorContainer fw6 shadow-3">{error}</div>
+    <div>
+      {error.length === 0?
+      <div></div>
+      :
+      <div className="ErrorContainer fw6 shadow-3">{error}</div>
+      }
+    </div>
   )
 }

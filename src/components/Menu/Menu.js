@@ -31,6 +31,7 @@ class Menu extends React.Component {
     })
     .then(response => response.json())
     .then(messArray => {
+      this.props.setPin(this.state.pincode);
       this.props.loadMessArray(messArray);
     })
   };
