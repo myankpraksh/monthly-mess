@@ -1,0 +1,30 @@
+.ErrorContainer{
+    width : 70%;
+    margin: auto;
+    border: 0.5rem dashed orangered;
+    background: rgba(255,255,0,0.7);
+    backdrop-filter: saturate(180%) blur(5px);
+    padding : 7rem;
+    margin-top : 3rem;
+
+}
+
+@media (max-width: 767px){
+    .ErrorContainer{
+        width : 80%;
+        padding: 4rem;
+    }
+}
+@media (max-width: 600px){
+    .ErrorContainer{
+        width : 90%;
+    }
+}
+
+@media (max-width: 444px){
+    .ErrorContainer{
+        width : 90%;
+        padding: 2rem;
+        margin-top: 2rem;
+    }
+}

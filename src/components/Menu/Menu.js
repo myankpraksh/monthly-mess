@@ -27,15 +27,11 @@ class Menu extends React.Component {
   getCards = () => {
     fetch("http://localhost:3000/mess/" + this.state.pincode, {
       method: "get",
-      headers: { "Content-Type": "application/json" },
-    //   body: JSON.stringify({
-    //     pin: this.state.pincode,
-    //   }),
+      headers: { "Content-Type": "application/json" }
     })
     .then(response => response.json())
     .then(messArray => {
-        console.log(messArray);
-        console.log("type", typeof(messArray));
+      this.props.loadMessArray(messArray);
     })
   };
   onSubmit = () => {
