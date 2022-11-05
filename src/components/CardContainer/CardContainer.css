@@ -1,0 +1,23 @@
+.CardContainer{
+    width : 70%;
+    margin: auto;
+    padding-top: 1.3rem;
+}
+
+@media (max-width: 767px){
+    .CardContainer{
+        width : 80%;
+    }
+}
+@media (max-width: 600px){
+    .CardContainer{
+        width : 24rem;
+    }
+}
+
+@media (max-width: 444px){
+    .CardContainer{
+        width : 100%;
+        
+    }
+}
