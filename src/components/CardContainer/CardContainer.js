@@ -1,7 +1,7 @@
 import React from "react";
 import "./CardContainer.css";
 import food from "./food-placeholder.jpg";
-export default function CardContainer({ messArray, pin }) {
+export default function CardContainer({ messArray, pin, onRatingChange }) {
   return (
     <div>
       {messArray.length > 0 ? (
@@ -35,17 +35,19 @@ export default function CardContainer({ messArray, pin }) {
                     <p className="di">{mess.rating + " ⭐/5 ⭐"}</p>
                   </div>
                   <div className="pt2 ttc">
-                    <label for="messrating" className="b pb2">
+                    <label for={mess.id} className="b pb2">
                       Rate this mess -{" "}
                     </label>
-                    <select name="messrating" id="messrating">
+                    <select id={mess.id} name={mess.id}>
                       <option value="1">1 ⭐</option>
                       <option value="2">2 ⭐</option>
                       <option value="3">3 ⭐</option>
                       <option value="4">4 ⭐</option>
                       <option value="4">5 ⭐</option>
                     </select>
-                    <input type="submit" className="ma2" value="Rate it!" />
+                    <input type="submit" className="ma2" value="Rate it!" 
+                    onClick={onRatingChange(mess.id)}
+                    />
                   </div>
                 </article>
               );

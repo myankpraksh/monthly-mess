@@ -10,6 +10,7 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
+      rating : 0,
       route: "home",
       isSignedIn: false,
       user: {
@@ -44,6 +45,11 @@ class App extends Component {
       },
     });
   };
+  onRatingChange = (id)=>{
+   
+  // let value = (id)=>{return document.getElementById(id).value};
+  //  alert(id + value);
+  }
   onRouteChange = (route) => {
     this.setState({ route: route });
   };
@@ -85,6 +91,7 @@ class App extends Component {
           <CardContainer
             messArray={this.state.messArray}
             pin={this.state.pin}
+            onRatingChange={this.onRatingChange}
           />
         </div>
       );
