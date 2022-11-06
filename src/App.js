@@ -3,18 +3,56 @@ import CardContainer from "./components/CardContainer/CardContainer";
 import ErrorMessage from "./components/ErrorMessage/ErrorMessage";
 import Menu from "./components/Menu/Menu";
 import Navigation from "./components/Navigation/Navigation";
+import SignIn from "./components/SignIn/SignIn";
+import MessProfile from "./components/MessProfile/MessProfile";
+import Register from "./components/Register/Register";
 class App extends Component {
   constructor() {
     super();
     this.state = {
-      pin : "",
+      route: "home",
+      isSignedIn: false,
+      user: {
+        id: "",
+        name: "",
+        email: "",
+        phone: "",
+        short_description: "",
+        address: "",
+        pincode: "",
+        city: "",
+        rating : "",
+      },
+      pin: "",
       messArray: [],
-      error: "Welcome!! Please enter your pincode above to find mess in your city and enjoy homely food. If you are mess owner, Register with us to grow your business and get discovered by the new generation of students, the \"Tech Savy\" students and working professionals. Let us help you grow your business in this hyper-competitive market. So what are you waiting for? Register now by clicking on \"Sign Up\" above."
+      error:
+        'Welcome!! Please enter your pincode above to find mess in your city and enjoy homely food. If you are mess owner, Register with us to grow your business and get discovered by the new generation of students, the "Tech Savy" students and working professionals. Let us help you grow your business in this hyper-competitive market. So what are you waiting for? Register now by clicking on "Sign Up" above.',
     };
   }
-  setPin = (pin)=>{
-    this.setState({pin});
-  }
+  loadUser = (data) => {
+    this.setState({
+      user: {
+        id: data.id,
+        name: data.name,
+        email: data.email,
+        phone: data.phone,
+        short_description: data.short_description,
+        address: data.address,
+        pincode: data.pincode,
+        city: data.city,
+        rating: data.rating,
+      },
+    });
+  };
+  onRouteChange = (route) => {
+    this.setState({ route: route });
+  };
+  onSignInChange = (siginstatus) => {
+    this.setState({ isSignedIn: siginstatus });
+  };
+  setPin = (pin) => {
+    this.setState({ pin });
+  };
   loadMessArray = (data) => {
     if (typeof data === "string") {
       if (data === "Mess not found")
@@ -34,14 +72,67 @@ class App extends Component {
     }
   };
   render() {
-    return (
-      <div>
-        <Navigation />
-        <Menu loadMessArray={this.loadMessArray} setPin={this.setPin} />
-        <ErrorMessage error={this.state.error}/>
-        <CardContainer messArray={this.state.messArray} pin={this.state.pin}/>
-      </div>
-    );
+    if (this.state.route === "home") {
+      return (
+        <div>
+          <Navigation
+            isSignedIn={this.state.isSignedIn}
+            onRouteChange={this.onRouteChange}
+            onSignInChange={this.onSignInChange}
+          />
+          <Menu loadMessArray={this.loadMessArray} setPin={this.setPin} />
+          <ErrorMessage error={this.state.error} />
+          <CardContainer
+            messArray={this.state.messArray}
+            pin={this.state.pin}
+          />
+        </div>
+      );
+    } else if (this.state.route === "signin") {
+      return (
+        <div>
+          <Navigation
+            isSignedIn={this.state.isSignedIn}
+            onRouteChange={this.onRouteChange}
+          />
+          <SignIn
+            isSignedIn={this.state.isSignedIn}
+            onRouteChange={this.onRouteChange}
+            loadUser={this.loadUser}
+            onSignInChange={this.onSignInChange}
+          />
+        </div>
+      );
+    } else if (this.state.route === "register") {
+      return (
+        <div>
+          <Navigation
+            isSignedIn={this.state.isSignedIn}
+            onRouteChange={this.onRouteChange}
+          />
+          <Register
+            isSignedIn={this.state.isSignedIn}
+            onRouteChange={this.onRouteChange}
+            loadUser={this.loadUser}
+            onSignInChange={this.onSignInChange}
+          />
+        </div>
+      );
+    } else if (this.state.route === "messprofile") {
+      return (
+        <div>
+          <Navigation
+            isSignedIn={this.state.isSignedIn}
+            onRouteChange={this.onRouteChange}
+            onSignInChange={this.onSignInChange}
+          />
+          <MessProfile
+            isSignedIn={this.state.isSignedIn}
+            user={this.state.user}
+          />
+        </div>
+      );
+    }
   }
 }
 
