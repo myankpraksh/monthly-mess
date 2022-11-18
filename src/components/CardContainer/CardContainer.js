@@ -35,7 +35,7 @@ export default function CardContainer({ messArray, pin, onRatingChange }) {
                     <p className="di">{mess.rating + " ⭐/5 ⭐"}</p>
                   </div>
                   <div className="pt2 ttc">
-                    <label for={mess.id} className="b pb2">
+                    <label htmlFor={mess.id} className="b pb2">
                       Rate this mess -{" "}
                     </label>
                     <select id={mess.id} name={mess.id}>
