@@ -77,7 +77,6 @@ class Register extends React.Component {
           if (typeof(user)==="string") {
             alert(user)}
             else{
-            console.log(user);
             this.props.loadUser(user);
             this.props.onSignInChange(true);
             this.props.onRouteChange("messprofile");

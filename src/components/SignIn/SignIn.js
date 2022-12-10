@@ -28,7 +28,6 @@ class SignIn extends React.Component {
     })
       .then((response) => response.json())
       .then((user) => {
-        console.log(user);
         if (user === "wrong credentials") {
           alert("Wrong Email or Password. Please try again.");
         } else if (user === "some error occurred") {
