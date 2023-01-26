@@ -53,11 +53,6 @@ class App extends Component {
     });
   };
 
-  //function to rate mess
-  onRatingChange = (id) => {
-
-  };
-
   //function to update routing status
   onRouteChange = (route) => {
     this.setState({ route: route });
@@ -107,7 +102,6 @@ class App extends Component {
           <CardContainer
             messArray={this.state.messArray}    //To send mess details to be displayed as search result
             pin={this.state.pin}    //to display pin in card container title message
-            onRatingChange={this.onRatingChange}    //
           />
         </div>
       );
