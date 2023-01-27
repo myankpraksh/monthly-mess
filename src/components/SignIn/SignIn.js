@@ -35,7 +35,7 @@ class SignIn extends React.Component {
         } else {
           this.props.loadUser(user);
           this.props.onSignInChange(true);
-          this.props.onRouteChange("home");
+          this.props.onRouteChange("messprofile");
         }
       });
   };
