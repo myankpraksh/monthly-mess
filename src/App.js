@@ -148,6 +148,8 @@ class App extends Component {
           />
           <MessProfile
             user={this.state.user}    //to display user details
+            onRouteChange={this.onRouteChange}    //to change route to home after account deletion
+            onSignInChange={this.onSignInChange}    //to change signed in state to false after account deletion
           />
         </div>
       );
