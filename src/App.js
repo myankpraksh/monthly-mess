@@ -6,6 +6,7 @@ import Navigation from "./components/Navigation/Navigation";
 import SignIn from "./components/SignIn/SignIn";
 import MessProfile from "./components/MessProfile/MessProfile";
 import Register from "./components/Register/Register";
+import ProfileEdit from "./components/ProfileEdit/ProfileEdit";
 
 //App component begins
 class App extends Component {
@@ -13,8 +14,8 @@ class App extends Component {
     super();
     this.state = {
       rating: 0,
-      route: "home",    //to manage routing
-      isSignedIn: false,    //to store signed in status
+      route: "home", //to manage routing
+      isSignedIn: false, //to store signed in status
       user: {
         //object to store user details when signed in
         id: "",
@@ -27,9 +28,9 @@ class App extends Component {
         city: "",
         rating: "",
       },
-      pin: "",    //to store pin which was searched
-      messArray: [],    //to store list of mess with their details when database returns after searching
-      
+      pin: "", //to store pin which was searched
+      messArray: [], //to store list of mess with their details when database returns after searching
+
       //to display welcome and error message
       error:
         'Welcome!! Please enter your pincode above to find mess in your city and enjoy homely food. If you are mess owner, Register with us to grow your business and get discovered by the new generation of students, the "Tech Savy" students and working professionals. Let us help you grow your business in this hyper-competitive market. So what are you waiting for? Register now by clicking on "Sign Up" above.',
@@ -90,34 +91,34 @@ class App extends Component {
       return (
         <div>
           <Navigation
-            isSignedIn={this.state.isSignedIn}    //to display correct navigation option
-            onRouteChange={this.onRouteChange}    //to change route to when clicking on nav buttons
-            onSignInChange={this.onSignInChange}    //to change signed in state to false when clicking on sign out
+            isSignedIn={this.state.isSignedIn} //to display correct navigation option
+            onRouteChange={this.onRouteChange} //to change route to when clicking on nav buttons
+            onSignInChange={this.onSignInChange} //to change signed in state to false when clicking on sign out
           />
-          <Menu 
-            loadMessArray={this.loadMessArray}    //to store mess search results fetched
-            setPin={this.setPin}    //to update pincode
+          <Menu
+            loadMessArray={this.loadMessArray} //to store mess search results fetched
+            setPin={this.setPin} //to update pincode
           />
           <ErrorMessage error={this.state.error} />
           <CardContainer
-            messArray={this.state.messArray}    //To send mess details to be displayed as search result
-            pin={this.state.pin}    //to display pin in card container title message
+            messArray={this.state.messArray} //To send mess details to be displayed as search result
+            pin={this.state.pin} //to display pin in card container title message
           />
         </div>
       );
-    //signin route to display signin page
+      //signin route to display signin page
     } else if (this.state.route === "signin") {
       return (
         <div>
           <Navigation
-            isSignedIn={this.state.isSignedIn}    
-            onRouteChange={this.onRouteChange}    //to change route to when clicking on nav buttons
-            onSignInChange={this.onSignInChange}    //to change signed in state to false when clicking on sign out
+            isSignedIn={this.state.isSignedIn}
+            onRouteChange={this.onRouteChange} //to change route to when clicking on nav buttons
+            onSignInChange={this.onSignInChange} //to change signed in state to false when clicking on sign out
           />
           <SignIn
-            onRouteChange={this.onRouteChange}    //to update route to register when clicked on register in sign in form & home when signin successful
-            loadUser={this.loadUser}    //to load user details fetched from db if signin successful
-            onSignInChange={this.onSignInChange}    //to change signedin status to true if signin successful
+            onRouteChange={this.onRouteChange} //to update route to register when clicked on register in sign in form & home when signin successful
+            loadUser={this.loadUser} //to load user details fetched from db if signin successful
+            onSignInChange={this.onSignInChange} //to change signedin status to true if signin successful
           />
         </div>
       );
@@ -126,38 +127,48 @@ class App extends Component {
       return (
         <div>
           <Navigation
-            isSignedIn={this.state.isSignedIn}    //to display correct navigation
-            onRouteChange={this.onRouteChange}    //to change route to when clicking on nav buttons
-            onSignInChange={this.onSignInChange}    //to change signed in state to false when clicking on sign out
+            isSignedIn={this.state.isSignedIn} //to display correct navigation
+            onRouteChange={this.onRouteChange} //to change route to when clicking on nav buttons
+            onSignInChange={this.onSignInChange} //to change signed in state to false when clicking on sign out
           />
           <Register
-            onRouteChange={this.onRouteChange}    //to update route to messprofile if register successful
-            loadUser={this.loadUser}    //to load user details in users object on successful register
-            onSignInChange={this.onSignInChange}    //to change signedin status to true if register successful
+            onRouteChange={this.onRouteChange} //to update route to messprofile if register successful
+            loadUser={this.loadUser} //to load user details in users object on successful register
+            onSignInChange={this.onSignInChange} //to change signedin status to true if register successful
           />
         </div>
       );
-     //messprofile route to display profile details of mess
+      //messprofile route to display profile details of mess
     } else if (this.state.route === "messprofile") {
       return (
         <div>
           <Navigation
-            isSignedIn={this.state.isSignedIn}    //to display correct navigation
-            onRouteChange={this.onRouteChange}    //to change route to when clicking on nav buttons
-            onSignInChange={this.onSignInChange}    //to change signed in state to false when clicking on sign out
+            isSignedIn={this.state.isSignedIn} //to display correct navigation
+            onRouteChange={this.onRouteChange} //to change route to when clicking on nav buttons
+            onSignInChange={this.onSignInChange} //to change signed in state to false when clicking on sign out
           />
           <MessProfile
-            user={this.state.user}    //to display user details
-            onRouteChange={this.onRouteChange}    //to change route to home after account deletion
-            onSignInChange={this.onSignInChange}    //to change signed in state to false after account deletion
+            user={this.state.user} //to display user details
+            onRouteChange={this.onRouteChange} //to change route to home after account deletion
+            onSignInChange={this.onSignInChange} //to change signed in state to false after account deletion
           />
         </div>
       );
     }
-    else if (this.state.route === "profileEdit"){
-      return(
+    //profileEdit route to let users edit their profile
+    else if (this.state.route === "profileEdit") {
+      return (
         <div>
-          q
+          <Navigation
+            isSignedIn={this.state.isSignedIn} //to display correct navigation
+            onRouteChange={this.onRouteChange} //to change route to when clicking on nav buttons
+            onSignInChange={this.onSignInChange} //to change signed in state to false when clicking on sign out
+          />
+          <ProfileEdit
+            user={this.state.user} //to display user details
+            onRouteChange={this.onRouteChange} //to change route to profile after successfully updating or cancel
+            loadUser={this.loadUser} //to load updated user details after update
+          />
         </div>
       );
     }

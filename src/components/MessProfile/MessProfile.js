@@ -7,34 +7,37 @@ export default class MessProfile extends Component {
   constructor() {
     super();
     this.state = {
-      popUp: false
+      popUp: false,
     };
   }
-deleteUser = ()=>{
-  fetch("http://localhost:3000/delete/" + this.props.user.id, {
-    method: "delete",
-    headers: { "Content-Type": "application/json" }
-  })
-  .then(response => response.json())
-  .then(response => {
-    if(response === 1){
-      this.props.onSignInChange(false);
-      this.props.onRouteChange("home");
-      alert("Your profile has been successfully deleted. Sad to see you go :-(")
-    }
-    else{
-      alert("Some error occurred trying to delete. Sorry. Please try again later.")
-    }
-  })
-};
+  deleteUser = () => {
+    fetch("http://localhost:3000/delete/" + this.props.user.id, {
+      method: "delete",
+      headers: { "Content-Type": "application/json" },
+    })
+      .then((response) => response.json())
+      .then((response) => {
+        if (response === 1) {
+          this.props.onSignInChange(false);
+          this.props.onRouteChange("home");
+          alert(
+            "Your profile has been successfully deleted. Sad to see you go :-("
+          );
+        } else {
+          alert(
+            "Some error occurred trying to delete. Sorry. Please try again later."
+          );
+        }
+      });
+  };
 
-setPopUp = (value)=>{
-  this.setState({popUp:value});
-};
+  setPopUp = (value) => {
+    this.setState({ popUp: value });
+  };
 
-editRoute = ()=>{
-this.props.onRouteChange("profileEdit");
-};
+  editRoute = () => {
+    this.props.onRouteChange("profileEdit");
+  };
 
   render() {
     const { user } = this.props;
@@ -53,16 +56,16 @@ this.props.onRouteChange("profileEdit");
                       </p>
                       <div className=" flex justify-around">
                         <input
-                          className="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-dark-red red hover-white pointer w-100 w-25-m w-20-l br2-ns br--right-ns"
+                          className="f6 f5-l input-reset dib fl pv3 grow tc bn bg-animate bg-black-70 hover-bg-dark-red red b hover-white pointer w-100 w-25-m w-20-l br2-ns br--right-ns"
                           type="submit"
                           value="Delete"
                           onClick={this.deleteUser}
                         />
                         <input
-                          className="f6 f5-l button-reset fl pv3 tc bn bg-animate bg-black-70 hover-bg-green green hover-white pointer w-100 w-25-m w-20-l br2-ns br--right-ns"
+                          className="f6 f5-l input-reset dib fl pv3 grow tc bn bg-animate bg-black-70 hover-bg-dark-green b green hover-white pointer w-100 w-25-m w-20-l br2-ns br--right-ns"
                           type="submit"
                           value="Cancel"
-                          onClick={()=>this.setPopUp(false)}
+                          onClick={() => this.setPopUp(false)}
                         />
                       </div>
                     </div>
@@ -107,7 +110,7 @@ this.props.onRouteChange("profileEdit");
               </div>
               <div className="">
                 <input
-                  onClick={()=>this.setPopUp(true)}
+                  onClick={() => this.setPopUp(true)}
                   className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib hover-bg-dark-red hover-white"
                   type="submit"
                   value="Delete Account"
