@@ -154,6 +154,13 @@ class App extends Component {
         </div>
       );
     }
+    else if (this.state.route === "profileEdit"){
+      return(
+        <div>
+          q
+        </div>
+      );
+    }
   }
 }
 

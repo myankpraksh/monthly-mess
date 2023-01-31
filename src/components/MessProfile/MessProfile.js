@@ -32,6 +32,10 @@ setPopUp = (value)=>{
   this.setState({popUp:value});
 };
 
+editRoute = ()=>{
+this.props.onRouteChange("profileEdit");
+};
+
   render() {
     const { user } = this.props;
     return (
@@ -95,7 +99,7 @@ setPopUp = (value)=>{
             <div className="button-section flex items-center justify-around mt3">
               <div className="">
                 <input
-                  //onClick
+                  onClick={this.editRoute}
                   className="b ph3 pv2 input-reset ba b--black bg-transparent grow pointer f6 dib hover-bg-navy hover-white"
                   type="submit"
                   value="Edit Profile"
