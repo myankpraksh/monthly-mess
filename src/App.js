@@ -32,8 +32,7 @@ class App extends Component {
       messArray: [], //to store list of mess with their details when database returns after searching
 
       //to display welcome and error message
-      error:
-        'Welcome!! Please enter your pincode above to find mess in your city and enjoy homely food. If you are mess owner, Register with us to grow your business and get discovered by the new generation of students, the "Tech Savy" students and working professionals. Let us help you grow your business in this hyper-competitive market. So what are you waiting for? Register now by clicking on "Sign Up" above.',
+      error: "welcomeMsg",
     };
   }
 
@@ -71,8 +70,7 @@ class App extends Component {
       if (data === "Mess not found")
         this.setState({
           messArray: [],
-          error:
-            "Sorry, none of member mess serve at your location currently. We sincerely apologize for the inconvenience caused and insure that we are working to increase our network and onboard new mess everyday. Please retry after some days.",
+          error: "locationNotAvailable",
         });
       else if (data === "error getting mess")
         this.setState({
