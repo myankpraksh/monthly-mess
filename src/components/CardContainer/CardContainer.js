@@ -1,7 +1,6 @@
 import React, { Component } from "react";
 import RateButton from "../RateButton/RateButton";
 import "./CardContainer.css";
-import food from "./food-placeholder.jpg";
 
 class CardContainer extends Component {
   render() {
@@ -29,7 +28,11 @@ class CardContainer extends Component {
                         </p>
                       </div>
                       <div className="pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns">
-                        <img src={food} className="db" alt={mess.name} />
+                        <img
+                          src={"http://localhost:3000/public/" + mess.img_name}
+                          className="db"
+                          alt={mess.name}
+                        />
                       </div>
                     </div>
                     <div className="pt2 ttc">

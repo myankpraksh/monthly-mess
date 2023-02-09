@@ -38,6 +38,8 @@ export default function ErrorMessage({ error }) {
             Please retry after some days."
           </p>
         </div>
+      ) : error === "" ? (
+        <div></div>
       ) : (
         <div className="ErrorContainer fw6 shadow-3">{error}</div>
       )}

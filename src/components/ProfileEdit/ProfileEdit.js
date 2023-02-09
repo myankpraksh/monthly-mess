@@ -1,5 +1,6 @@
 import React, { Component } from "react";
 import "./ProfileEdit.css";
+import axios from "axios";
 export default class ProfileEdit extends Component {
   constructor(props) {
     super(props);
@@ -53,6 +54,19 @@ export default class ProfileEdit extends Component {
       city: this.props.user.city,
     });
   };
+  validPic = (event) => {
+    let flag = false;
+    if (
+      typeof document.getElementById("displayPic").files[0] !== "undefined" &&
+      (document.getElementById("displayPic").files[0].size >= 2100000 ||
+        document.getElementById("displayPic").files[0].type.split("/")[0] !==
+          "image")
+    ) {
+      flag = true;
+      document.getElementById("displayPic").value = "";
+    }
+    if (flag) alert("Please select an image file of less than 2MB.");
+  };
   cancelUpdate = () => {
     this.props.onRouteChange("messprofile");
   };
@@ -62,29 +76,86 @@ export default class ProfileEdit extends Component {
       alert("All fields are required. Please fill update from completely.");
     }
     if (bool) {
-      fetch("http://localhost:3000/updateuser/" + this.props.user.id, {
-        method: "post",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({
-          email: this.state.email,
-          name: this.state.name,
-          phone: this.state.phone,
-          short_description: this.state.short_description,
-          address: this.state.address,
-          pincode: this.state.pincode,
-          city: this.state.city,
-        }),
-      })
-        .then((response) => response.json())
-        .then((user) => {
-          if (typeof user === "string") {
-            alert(user);
-          } else {
-            this.props.loadUser(user);
-            this.props.onRouteChange("messprofile");
-            alert("Profile updated Successfully!");
-          }
-        });
+      if (
+        typeof document.getElementById("displayPic").files[0] === "undefined"
+      ) {
+        fetch("http://localhost:3000/updateuser/" + this.props.user.id, {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: this.state.email,
+            name: this.state.name,
+            phone: this.state.phone,
+            short_description: this.state.short_description,
+            address: this.state.address,
+            pincode: this.state.pincode,
+            city: this.state.city,
+          }),
+        })
+          .then((response) => response.json())
+          .then((user) => {
+            if (typeof user === "string") {
+              alert(user);
+            } else {
+              this.props.loadUser(user);
+              this.props.onRouteChange("messprofile");
+              alert("Profile updated Successfully!");
+            }
+          });
+      } else {
+        fetch("http://localhost:3000/updateuser/" + this.props.user.id, {
+          method: "post",
+          headers: { "Content-Type": "application/json" },
+          body: JSON.stringify({
+            email: this.state.email,
+            name: this.state.name,
+            phone: this.state.phone,
+            short_description: this.state.short_description,
+            address: this.state.address,
+            pincode: this.state.pincode,
+            city: this.state.city,
+          }),
+        })
+          .then((response) => response.json())
+          .then((user) => {
+            if (typeof user === "string") {
+              alert(user);
+            } else {
+              const data = new FormData();
+              data.append("id", this.props.user.id);
+              data.append(
+                "ext",
+                document
+                  .getElementById("displayPic")
+                  .files[0].type.split("/")[1]
+              );
+              data.append(
+                "file",
+                document.getElementById("displayPic").files[0]
+              );
+
+              axios
+                .post(
+                  "http://localhost:3000/uploadimage/" + this.props.user.id,
+                  data
+                )
+                .then((res) => {
+                  if (res === "err") {
+                    this.props.loadUser(user);
+                    this.props.onRouteChange("messprofile");
+                    alert(
+                      "Profile information updated Successfully! But error occurred in image update, Sorry"
+                    );
+                  } else {
+                    user.img_name = res.data;
+                    this.props.loadUser(user);
+                    this.props.onRouteChange("messprofile");
+                    alert("Profile updated Successfully!");
+                  }
+                });
+            }
+          });
+      }
     }
   };
   render() {
@@ -175,7 +246,7 @@ export default class ProfileEdit extends Component {
                   onChange={this.onPincodeChange}
                 />
               </div>
-              <div className="mv3">
+              <div className="mt3">
                 <label className="db fw6 lh-copy f6" htmlFor="city">
                   City
                 </label>
@@ -186,6 +257,19 @@ export default class ProfileEdit extends Component {
                   id="city"
                   value={this.state.city}
                   onChange={this.onCityChange}
+                />
+              </div>
+              <div className="mv3">
+                <label className="db fw6 lh-copy f6" htmlFor="displayPic">
+                  Mess Image
+                </label>
+                <input
+                  className="input-reset ba bg-transparent w-100"
+                  type="file"
+                  name="displayPic"
+                  id="displayPic"
+                  accept="image/*"
+                  onChange={this.validPic}
                 />
               </div>
             </fieldset>

@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import "./MessProfile.css";
-import food from "./food-placeholder.jpg";
 import PopupBackground from "../PopupBackground/PopupBackground";
 
 export default class MessProfile extends Component {
@@ -86,7 +85,16 @@ export default class MessProfile extends Component {
                   <p className="f5 f4-l lh-copy ">{user.short_description}</p>
                 </div>
                 <div className="pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns">
-                  <img src={food} className="db" alt={user.name} />
+                  <img
+                    src={
+                      "http://localhost:3000/public/" +
+                      user.img_name +
+                      "?time=" +
+                      new Date()
+                    }
+                    className="db"
+                    alt={user.name}
+                  />
                 </div>
               </div>
               <div className="pt2 ttc">

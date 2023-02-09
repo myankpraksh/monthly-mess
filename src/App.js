@@ -49,6 +49,7 @@ class App extends Component {
         pincode: data.pincode,
         city: data.city,
         rating: data.rating,
+        img_name: data.img_name,
       },
     });
   };
