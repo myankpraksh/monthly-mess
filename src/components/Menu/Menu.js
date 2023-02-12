@@ -25,7 +25,7 @@ class Menu extends React.Component {
     return flag;
   };
   getCards = () => {
-    fetch("monthly-mess-backend/mess/" + this.state.pincode, {
+    fetch("https://monthly-mess-backend.onrender.com/mess/" + this.state.pincode, {
       method: "get",
       headers: { "Content-Type": "application/json" }
     })

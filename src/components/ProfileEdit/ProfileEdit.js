@@ -79,7 +79,7 @@ export default class ProfileEdit extends Component {
       if (
         typeof document.getElementById("displayPic").files[0] === "undefined"
       ) {
-        fetch("monthly-mess-backend/updateuser/" + this.props.user.id, {
+        fetch("https://monthly-mess-backend.onrender.com/updateuser/" + this.props.user.id, {
           method: "post",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -103,7 +103,7 @@ export default class ProfileEdit extends Component {
             }
           });
       } else {
-        fetch("monthly-mess-backend/updateuser/" + this.props.user.id, {
+        fetch("https://monthly-mess-backend.onrender.com/updateuser/" + this.props.user.id, {
           method: "post",
           headers: { "Content-Type": "application/json" },
           body: JSON.stringify({
@@ -136,7 +136,7 @@ export default class ProfileEdit extends Component {
 
               axios
                 .post(
-                  "monthly-mess-backend/uploadimage/" + this.props.user.id,
+                  "https://monthly-mess-backend.onrender.com/uploadimage/" + this.props.user.id,
                   data
                 )
                 .then((res) => {

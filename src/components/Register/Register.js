@@ -57,7 +57,7 @@ class Register extends React.Component {
       );
     }
     if (bool) {
-      fetch("monthly-mess-backend/register", {
+      fetch("https://monthly-mess-backend.onrender.com/register", {
         method: "post",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify({
