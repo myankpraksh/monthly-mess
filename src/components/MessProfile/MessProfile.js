@@ -10,7 +10,7 @@ export default class MessProfile extends Component {
     };
   }
   deleteUser = () => {
-    fetch("http://localhost:3000/delete/" + this.props.user.id, {
+    fetch("monthly-mess-backend/delete/" + this.props.user.id, {
       method: "delete",
       headers: { "Content-Type": "application/json" },
     })
@@ -87,7 +87,7 @@ export default class MessProfile extends Component {
                 <div className="pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns">
                   <img
                     src={
-                      "http://localhost:3000/public/" +
+                      "monthly-mess-backend/public/" +
                       user.img_name +
                       "?time=" +
                       new Date()

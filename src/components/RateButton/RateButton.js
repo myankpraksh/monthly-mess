@@ -18,7 +18,7 @@ export class RateButton extends Component {
     const { mess } = this.props;
     const rate = () => {
       fetch(
-        "http://localhost:3000/rate/" +
+        "monthly-mess-backend/rate/" +
           this.props.mess.id +
           "/" +
           this.state.score,

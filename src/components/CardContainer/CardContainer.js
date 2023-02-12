@@ -29,7 +29,7 @@ class CardContainer extends Component {
                       </div>
                       <div className="pl3-ns order-1 order-2-ns mb4 mb0-ns w-100 w-40-ns">
                         <img
-                          src={"http://localhost:3000/public/" + mess.img_name}
+                          src={"monthly-mess-backend/public/" + mess.img_name}
                           className="db"
                           alt={mess.name}
                         />
