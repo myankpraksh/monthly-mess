@@ -1,35 +1,49 @@
-.ErrorContainer{
-    width : 70%;
-    margin: auto;
-    border: 0.5rem solid orangered;
-    background: rgba(243, 243, 83, 0.548);
-    backdrop-filter: saturate(180%) blur(15px);
-    padding : 7rem;
-    margin-top : 3rem;
-    font-size: 2.25rem;
-    margin-bottom: 1rem;
-    border-radius: 30px;
-
+.ErrorContainer {
+  width: 70%;
+  margin: auto;
+  border: 0.5rem solid orangered;
+  background: rgba(243, 243, 83, 0.548);
+  backdrop-filter: saturate(180%) blur(15px);
+  padding: 7rem;
+  margin-top: 3rem;
+  font-size: 2.25rem;
+  margin-bottom: 1rem;
+  border-radius: 30px;
+}
+.demoInstruction {
+  border: 0.5rem solid rgb(2, 126, 197);
+  background: rgba(226, 118, 253, 0.75);
+  font-size: 1.8rem;
+  padding: 1.8rem;
+}
+@media (max-width: 767px) {
+  .ErrorContainer {
+    width: 80%;
+    padding: 4rem;
+  }
+}
+@media (max-width: 600px) {
+  .ErrorContainer {
+    width: 90%;
+    font-size: 2rem;
+  }
+  .demoInstruction {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 1.5rem;
+  }
 }
 
-@media (max-width: 767px){
-    .ErrorContainer{
-        width : 80%;
-        padding: 4rem;
-    }
-}
-@media (max-width: 600px){
-    .ErrorContainer{
-        width : 90%;
-        font-size: 2rem;
-    }
-}
-
-@media (max-width: 444px){
-    .ErrorContainer{
-        width : 90%;
-        padding: 2rem;
-        margin-top: 2rem;
-        font-size: 1.7rem;
-    }
+@media (max-width: 444px) {
+  .ErrorContainer {
+    width: 90%;
+    padding: 2rem;
+    margin-top: 2rem;
+    font-size: 1.7rem;
+  }
+  .demoInstruction {
+    font-size: 1.2rem;
+    font-weight: 500;
+    padding: 1.5rem;
+  }
 }
