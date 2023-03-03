@@ -12,7 +12,7 @@ It's like a mini search engine as well as a feedback database, I hope this will 
 This project is live [here](https://projects.myankpraksh.me/monthlymess/) and [here](https://monthlymess.compare)
 If links are down, please raise an issue to let me know and I will fix it ASAP.
 
-For demostration puposes I have registered few dummy accounts, they have the following pincodes
+For demonstration purposes I have registered few dummy accounts, they have the following pincodes :
  * 110001
  * 110011
  * 110022
